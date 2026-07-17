@@ -3,11 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Volume2, VolumeX, ChevronDown } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Welcome from './components/Welcome';
-import Quote from './components/Quote';
+import Countdown from './components/Countdown';
+import ScratchCard from './components/ScratchCard';
+import SaveCalendar from './components/SaveCalendar';
 import Gallery from './components/Gallery';
-import Timeline from './components/Timeline';
-import Events from './components/Events';
 import Venue from './components/Venue';
 import RSVP from './components/RSVP';
 import Footer from './components/Footer';
@@ -130,11 +129,10 @@ function App() {
       </AnimatePresence>
 
       <Hero />
-      <Welcome />
-      <Quote />
+      <Countdown />
+      <ScratchCard />
+      <SaveCalendar />
       <Gallery />
-      <Timeline />
-      <Events />
       <Venue />
       <RSVP />
       <Footer />
