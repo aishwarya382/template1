@@ -4,21 +4,21 @@ import { MapPin } from 'lucide-react';
 
 const Venue = () => {
   return (
-    <section className="py-24 bg-transparent text-ivory">
+    <section className="py-24 bg-transparent text-charcoal">
       <div className="container-luxury text-center">
-        <h2 className="section-title text-gold">The Venue</h2>
+        <h2 className="section-title text-crimson">The Venue</h2>
         
         <motion.div 
-          className="max-w-4xl mx-auto glass-card-red p-10 mt-12 flex flex-col items-center"
+          className="max-w-4xl mx-auto glass-card-light p-10 mt-12 flex flex-col items-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
           <div className="flex justify-center mb-6">
-            <MapPin className="text-gold w-12 h-12" />
+            <MapPin className="text-crimson w-12 h-12" />
           </div>
-          <h3 className="font-playfair text-3xl text-gold-light mb-4">The Grand Taj Palace</h3>
-          <p className="font-montserrat text-lg text-ivory/80 leading-relaxed mb-8 text-center">
+          <h3 className="font-playfair text-3xl text-crimson-light mb-4">The Grand Taj Palace</h3>
+          <p className="font-montserrat text-lg text-charcoal/80 leading-relaxed mb-8 text-center">
             1 Diplomatic Enclave, Chanakyapuri<br/>
             New Delhi, 110021<br/>
             India

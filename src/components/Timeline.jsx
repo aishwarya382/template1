@@ -10,9 +10,9 @@ const Timeline = () => {
   ];
 
   return (
-    <section className="py-24 bg-transparent text-ivory">
+    <section className="py-24 bg-transparent text-charcoal">
       <div className="container-luxury">
-        <h2 className="section-title text-gold">Schedule of Events</h2>
+        <h2 className="section-title text-crimson">Schedule of Events</h2>
         <div className="relative max-w-3xl mx-auto mt-12">
           {/* Vertical Line */}
           <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-gold/50 -translate-x-1/2" />
@@ -27,13 +27,13 @@ const Timeline = () => {
                 viewport={{ once: true }}
               >
                 <div className="w-1/2 px-4 md:px-8">
-                  <div className={`glass-card-red p-6 ${idx % 2 === 0 ? 'text-left' : 'text-right'}`}>
-                    <h3 className="font-playfair text-xl text-gold-light">{e.title}</h3>
-                    <p className="font-montserrat text-xs font-semibold tracking-widest text-ivory/70 my-2">{e.time}</p>
-                    <p className="font-montserrat text-sm text-ivory/90">{e.desc}</p>
+                  <div className={`glass-card-light p-6 ${idx % 2 === 0 ? 'text-left' : 'text-right'}`}>
+                    <h3 className="font-playfair text-xl text-crimson-light">{e.title}</h3>
+                    <p className="font-montserrat text-xs font-semibold tracking-widest text-charcoal/70 my-2">{e.time}</p>
+                    <p className="font-montserrat text-sm text-charcoal/90">{e.desc}</p>
                   </div>
                 </div>
-                <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-maroon border-2 border-gold shadow-[0_0_15px_rgba(212,175,55,0.8)]" />
+                <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-white border-2 border-crimson shadow-[0_0_15px_rgba(212,175,55,0.8)]" />
               </motion.div>
             ))}
           </div>

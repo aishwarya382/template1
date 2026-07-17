@@ -10,23 +10,23 @@ const Events = () => {
   ];
 
   return (
-    <section className="py-24 bg-transparent text-ivory">
+    <section className="py-24 bg-transparent text-charcoal">
       <div className="container-luxury">
-        <h2 className="section-title text-gold">The Celebration</h2>
+        <h2 className="section-title text-crimson">The Celebration</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {events.map((e, idx) => (
             <motion.div 
               key={idx}
-              className="glass-card-red luxury-card p-10 text-center"
+              className="glass-card-light luxury-card p-10 text-center"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
             >
-              <h3 className="font-playfair text-2xl text-gold-light mb-2">{e.title}</h3>
-              <p className="font-montserrat text-sm tracking-[2px] text-ivory/80 uppercase mb-4 font-semibold">{e.date} • {e.time}</p>
+              <h3 className="font-playfair text-2xl text-crimson-light mb-2">{e.title}</h3>
+              <p className="font-montserrat text-sm tracking-[2px] text-charcoal/80 uppercase mb-4 font-semibold">{e.date} • {e.time}</p>
               <div className="w-12 h-[1px] bg-gold/50 mx-auto mb-4" />
-              <p className="font-montserrat text-ivory/90 leading-relaxed">{e.desc}</p>
+              <p className="font-montserrat text-charcoal/90 leading-relaxed">{e.desc}</p>
             </motion.div>
           ))}
         </div>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const SwanBackgroundVideo = ({ videoSrc }) => {
   return (
-    <div className="fixed inset-0 w-full h-full z-0 overflow-hidden bg-bg-red">
+    <div className="fixed inset-0 w-full h-full z-0 overflow-hidden bg-bg-light">
       {/* Fallback pattern if video is missing */}
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] opacity-80" />
       

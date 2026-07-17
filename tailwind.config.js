@@ -7,14 +7,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        'bg-red': '#450a0a',
-        'maroon': '#7f1d1d',
+        'charcoal': '#1a1a1a',
+        'maroon': '#5A0F1B',
+        'maroon-dark': '#450a0a',
         'crimson': '#991b1b',
         'ivory': '#FDFBF7',
-        'charcoal': '#1F1F1F',
-        'gold': '#D4AF37',
-        'gold-light': '#E8D8B5',
-        'gold-dark': '#B5952F'
+        'bg-light': '#ffffff',
+        'bg-red': '#ffffff',
       },
       fontFamily: {
         cinzel: ['"Cinzel Decorative"', 'cursive'],

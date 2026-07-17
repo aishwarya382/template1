@@ -27,6 +27,17 @@ function App() {
     };
   }, []);
 
+  const toggleAudio = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
   const handleEnter = () => {
     setHasEntered(true);
     if (audioRef.current) {
@@ -38,26 +49,15 @@ function App() {
     }
   };
 
-  const toggleMusic = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
-
   return (
-    <div className="font-lora bg-bg-red text-ivory min-h-screen overflow-x-hidden relative">
+    <div className="font-lora bg-bg-light text-charcoal min-h-screen overflow-x-hidden relative">
       
       {/* Dynamic Background Video */}
       <SwanBackgroundVideo videoSrc="" />
 
       {/* Luxury Background Frame */}
-      <div className="fixed inset-4 z-40 border-[1px] border-gold/30 pointer-events-none mix-blend-screen" />
-      <div className="fixed inset-6 z-40 border-[1px] border-gold/20 pointer-events-none mix-blend-screen" />
+      <div className="fixed inset-4 z-40 border-[1px] border-crimson/30 pointer-events-none mix-blend-multiply" />
+      <div className="fixed inset-6 z-40 border-[1px] border-crimson/20 pointer-events-none mix-blend-multiply" />
       
       {/* Flower Shower Particle System */}
       <FlowerShower />
@@ -66,13 +66,13 @@ function App() {
       <AnimatePresence>
         {!hasEntered && (
           <motion.div 
-            className="fixed inset-0 z-[100] flex flex-col items-center justify-center cursor-pointer bg-bg-red"
-            style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/black-paper.png')" }}
+            className="fixed inset-0 z-[100] flex flex-col items-center justify-center cursor-pointer bg-bg-light"
+            style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cream-paper.png')" }}
             onClick={handleEnter}
             exit={{ opacity: 0, scale: 1.05 }}
             transition={{ duration: 1.2, ease: "easeInOut" }}
           >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_30%,_rgba(69,10,10,0.8)_100%)] pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_30%,_rgba(255,255,255,0.8)_100%)] pointer-events-none" />
             
             <motion.div 
               className="text-center relative z-10 flex flex-col items-center"
@@ -83,15 +83,15 @@ function App() {
               <img 
                 src="https://pub-96ce671efbac4dbfbc89b044c631a913.r2.dev/ChatGPT%20Image%20Jun%2023%2C%202026%2C%2004_40_29%20PM.png" 
                 alt="Open your invitation" 
-                className="w-full max-w-[320px] md:max-w-[440px] drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)]"
+                className="w-full max-w-[320px] md:max-w-[440px] drop-shadow-[0_15px_30px_rgba(0,0,0,0.2)]"
                 draggable="false"
               />
               
               <div className="flex flex-col items-center gap-3 mt-8 animate-pulse">
-                <span className="font-cinzel tracking-editorial text-xs md:text-sm text-gold-light/80 uppercase">
+                <span className="font-cinzel tracking-editorial text-xs md:text-sm text-crimson/80 uppercase">
                   Tap to Open
                 </span>
-                <ChevronDown className="w-5 h-5 text-gold-light/60" />
+                <ChevronDown className="w-5 h-5 text-crimson/60" />
               </div>
             </motion.div>
           </motion.div>
@@ -110,8 +110,8 @@ function App() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.5 }}
             transition={{ delay: 1, duration: 0.5 }}
-            onClick={toggleMusic}
-            className="fixed bottom-6 right-6 z-50 w-[60px] h-[60px] bg-[#5A0F1B] rounded-full flex items-center justify-center border border-gold/20 shadow-[0_4px_20px_rgba(0,0,0,0.6)] hover:scale-105 hover:bg-[#701524] transition-all text-ivory/90"
+            onClick={toggleAudio}
+            className="fixed bottom-6 right-6 z-50 w-[60px] h-[60px] bg-white rounded-full flex items-center justify-center border border-crimson/20 shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:scale-105 hover:bg-gray-50 transition-all text-crimson"
           >
             {isPlaying ? <Volume2 size={24} strokeWidth={1.5} /> : <VolumeX size={24} strokeWidth={1.5} />}
           </motion.button>
