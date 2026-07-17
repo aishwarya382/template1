@@ -12,6 +12,7 @@ import Venue from './components/Venue';
 import RSVP from './components/RSVP';
 import Footer from './components/Footer';
 import FlowerShower from './components/FlowerShower';
+import SwanBackgroundVideo from './components/SwanBackgroundVideo';
 
 function App() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -51,6 +52,9 @@ function App() {
   return (
     <div className="font-lora bg-bg-red text-ivory min-h-screen overflow-x-hidden relative">
       
+      {/* Dynamic Background Video */}
+      <SwanBackgroundVideo videoSrc="" />
+
       {/* Luxury Background Frame */}
       <div className="fixed inset-4 z-40 border-[1px] border-gold/30 pointer-events-none mix-blend-screen" />
       <div className="fixed inset-6 z-40 border-[1px] border-gold/20 pointer-events-none mix-blend-screen" />
