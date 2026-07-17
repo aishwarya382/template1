@@ -60,21 +60,27 @@ const Countdown = () => {
   }, []);
 
   return (
-    <section className="w-full py-24 px-6 flex flex-col items-center bg-rose-gold/5">
-      <motion.h2 
-        className="font-cinzel text-3xl text-champagne-gold mb-12 text-center"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-      >
-        Countdown to Forever
-      </motion.h2>
-      
-      <div className="flex justify-center flex-wrap gap-y-6">
-        <FlipUnit value={timeLeft.days} label="Days" />
-        <FlipUnit value={timeLeft.hours} label="Hours" />
-        <FlipUnit value={timeLeft.minutes} label="Minutes" />
-        <FlipUnit value={timeLeft.seconds} label="Seconds" />
+    <section className="py-20 bg-bg-dark text-ivory relative overflow-hidden">
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 pointer-events-none" />
+      <div className="container-luxury relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="flex flex-wrap justify-center gap-4 sm:gap-8"
+        >
+          {Object.entries(timeLeft).map(([unit, value]) => (
+            <div key={unit} className="count-box flex flex-col items-center justify-center">
+              <h2 className="text-4xl sm:text-5xl drop-shadow-md">
+                {String(value).padStart(2, '0')}
+              </h2>
+              <span className="text-xs sm:text-sm font-montserrat uppercase tracking-[3px] text-ivory/70 mt-2">
+                {unit}
+              </span>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

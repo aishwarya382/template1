@@ -1,70 +1,83 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 
-const images = [
-  "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=2069", // Bride portrait
-  "https://images.unsplash.com/photo-1595986630530-969786b19b4d?auto=format&fit=crop&q=80&w=2070", // Groom portrait
-  "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=2070", // Couple
-  "https://images.unsplash.com/photo-1535295972055-1c762f4483e5?auto=format&fit=crop&q=80&w=2000", // Cake
-  "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=2070", // Stage
-  "https://images.unsplash.com/photo-1605886616428-1b327b87c71d?auto=format&fit=crop&q=80&w=2000", // Rings
-  "https://images.unsplash.com/photo-1513278974582-3e1b4a4fa21e?auto=format&fit=crop&q=80&w=2000", // Candle lit
-  "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=2000"  // Grand hall
+const IMAGES = [
+  'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1000&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1549488344-c146e297a731?q=80&w=1000&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=1000&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=1000&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1509927083803-4bd519298ac4?q=80&w=1000&auto=format&fit=crop'
 ];
 
 const Gallery = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-
-  useEffect(() => {
-    if (isPaused) return;
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 3000);
-    return () => clearInterval(timer);
-  }, [isPaused]);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   return (
-    <section className="w-full py-24 px-6 flex flex-col items-center">
-      <h2 className="font-cinzel text-3xl text-champagne-gold mb-12 text-center">Moments</h2>
-      
-      <div 
-        className="relative w-full max-w-lg aspect-[4/5] rounded-t-full overflow-hidden shadow-2xl border-4 border-champagne-gold/30"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-        onTouchStart={() => setIsPaused(true)}
-        onTouchEnd={() => setIsPaused(false)}
-      >
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={currentIndex}
-            src={images[currentIndex]}
-            alt={`Wedding moment ${currentIndex + 1}`}
-            className="absolute inset-0 w-full h-full object-cover"
-            initial={{ opacity: 0, scale: 1 }}
-            animate={{ opacity: 1, scale: 1.1 }}
-            exit={{ opacity: 0, scale: 1.1 }}
-            transition={{ 
-              opacity: { duration: 1.5 },
-              scale: { duration: 5, ease: "linear" } // Ken Burns effect
-            }}
-          />
-        </AnimatePresence>
+    <section className="py-24 bg-bg-dark text-ivory">
+      <div className="container-luxury">
+        <h2 className="section-title">Captured Moments</h2>
         
-        {/* Overlays removed for clearer images */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
+          {IMAGES.map((img, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="glass-card overflow-hidden cursor-pointer aspect-square relative group"
+              onClick={() => setSelectedImage(index)}
+            >
+              <img 
+                src={img} 
+                alt={`Gallery ${index + 1}`} 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-maroon/20 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-500" />
+            </motion.div>
+          ))}
+        </div>
       </div>
-      
-      {/* Dots */}
-      <div className="flex gap-2 mt-6">
-        {images.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrentIndex(i)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${i === currentIndex ? 'bg-champagne-gold w-6' : 'bg-gray-300'}`}
-            aria-label={`Go to slide ${i + 1}`}
-          />
-        ))}
-      </div>
+
+      <AnimatePresence>
+        {selectedImage !== null && (
+          <motion.div 
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <button 
+              className="absolute top-6 right-6 text-gold hover:text-ivory transition-colors z-50"
+              onClick={() => setSelectedImage(null)}
+            >
+              <X size={32} />
+            </button>
+            
+            <button 
+              className="absolute left-6 text-gold hover:text-ivory transition-colors z-50"
+              onClick={() => setSelectedImage((prev) => (prev > 0 ? prev - 1 : IMAGES.length - 1))}
+            >
+              <ChevronLeft size={48} />
+            </button>
+            
+            <img 
+              src={IMAGES[selectedImage]} 
+              className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-luxury border border-gold/20"
+              alt="Selected"
+            />
+            
+            <button 
+              className="absolute right-6 text-gold hover:text-ivory transition-colors z-50"
+              onClick={() => setSelectedImage((prev) => (prev < IMAGES.length - 1 ? prev + 1 : 0))}
+            >
+              <ChevronRight size={48} />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

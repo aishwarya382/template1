@@ -26,19 +26,22 @@ const Hero = () => {
     }
   };
 
-  // Slideshow Logic
+  // Slideshow Logic (Every 3s)
   useEffect(() => {
     if (!isOpen) return; // Only run slideshow when open
     
     const interval = setInterval(() => {
       setCurrentBg((prev) => (prev + 1) % BACKGROUNDS.length);
-    }, 2500); // Every 2.5s
+    }, 3000); 
 
     return () => clearInterval(interval);
   }, [isOpen]);
 
+  // Particles
+  const particles = Array.from({ length: 20 });
+
   return (
-    <section className="relative w-full h-[100svh] flex items-center justify-center overflow-hidden bg-black">
+    <section className="relative w-full h-[100svh] flex items-center justify-center overflow-hidden bg-bg-dark">
       
       {/* Background and Invitation Content (Underneath the Envelope) */}
       <motion.div 
@@ -50,60 +53,57 @@ const Hero = () => {
         }}
         transition={{ duration: 1.5, ease: cinematicEase, delay: 0.2 }}
       >
-        {/* Slideshow Backgrounds with Crossfade & Flash */}
-        <div className="absolute inset-0">
+        {/* Slideshow Backgrounds with Ken Burns Effect */}
+        <div className="absolute inset-0 overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentBg}
-              className="absolute inset-0 bg-cover bg-center opacity-90"
-              style={{ backgroundImage: `url(${BACKGROUNDS[currentBg]})` }}
-              initial={{ opacity: 0, scale: 1 }}
-              animate={{ opacity: 1, scale: 1.05 }} // Gentle 1.0 -> 1.05 zoom
-              exit={{ opacity: 0, scale: 1.1 }}
+              className="absolute inset-0 hero-bg"
+              style={{ 
+                background: `linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.55)), url(${BACKGROUNDS[currentBg]}) center/cover no-repeat` 
+              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               transition={{ duration: 0.8, ease: "linear" }}
-            />
-          </AnimatePresence>
-
-          {/* Flash Effect on Transition */}
-          <AnimatePresence>
-            <motion.div
-              key={`flash-${currentBg}`}
-              className="absolute inset-0 bg-white z-10 pointer-events-none mix-blend-overlay"
-              initial={{ opacity: 0.15 }}
-              animate={{ opacity: 0 }}
-              transition={{ duration: 0.15, ease: "easeOut" }} // 150ms soft flash
             />
           </AnimatePresence>
         </div>
 
-        {/* Ambient Lighting & Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F3E5AB]/90 via-[#FDFBF7]/70 to-[#FDFBF7]/90 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.4)_0%,_transparent_60%)]" /> {/* Spotlight */}
-        
-        {/* Bokeh & Particles Placeholder (CSS based) */}
-        <div className="absolute inset-0 opacity-40 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] mix-blend-screen" />
+        {/* Floating Particles */}
+        <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
+          {particles.map((_, i) => (
+            <div 
+              key={i} 
+              className="particle" 
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100 + 100}%`,
+                animationDelay: `${Math.random() * 10}s`,
+                animationDuration: `${10 + Math.random() * 5}s`
+              }}
+            />
+          ))}
+        </div>
 
-        {/* Light rays */}
-        <div className="absolute -top-1/2 left-1/2 -translate-x-1/2 w-[150%] h-[150%] bg-[radial-gradient(circle_at_50%_0%,_rgba(255,255,255,0.1)_0%,_transparent_50%)] pointer-events-none" />
-
-        {/* Floral Arch Frame / Luxury Card */}
-        <div className="relative w-[90%] max-w-lg mx-auto h-[85vh] border-[2px] border-[#D4AF37]/50 rounded-t-[200px] flex flex-col items-center justify-start pt-20 z-20 shadow-luxury glass-card bg-[#FDFBF7]/40 backdrop-blur-sm overflow-hidden">
+        {/* Dark Luxury Card */}
+        <div className="relative w-[90%] max-w-lg mx-auto h-[85vh] flex flex-col items-center justify-start pt-20 z-20 glass-card">
           
-          <h3 className="font-cinzel text-3xl md:text-4xl tracking-[2px] text-[#8B3A4A] mb-4 drop-shadow-sm opacity-90">Wedding Day</h3>
-          <p className="font-montserrat text-sm md:text-base tracking-[3px] text-[#D4AF37] mb-16 opacity-90 uppercase font-semibold">27 September 2026</p>
+          <h3 className="font-playfair text-3xl md:text-4xl tracking-[2px] text-gold mb-4 drop-shadow-sm opacity-90">Wedding Day</h3>
+          <p className="font-montserrat text-sm md:text-base tracking-[3px] text-ivory mb-16 opacity-90 uppercase font-semibold">27 September 2026</p>
           
-          {/* Embossed Gold Foil Effect on Names */}
+          {/* Couple Names */}
           <div className="flex flex-col items-center justify-center space-y-2">
             <h1 
-              className="font-cinzel text-[54px] md:text-[64px] text-transparent bg-clip-text bg-gradient-to-b from-[#D4AF37] via-[#b58c22] to-[#7a5b0e] leading-none drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]"
-              style={{ textShadow: "0px 1px 1px rgba(255,255,255,0.8), 0px 2px 4px rgba(0,0,0,0.4)" }}
+              className="font-cinzel text-[54px] md:text-[64px] text-ivory leading-none drop-shadow-md"
+              style={{ textShadow: "0 0 30px rgba(201,168,76,.35)", letterSpacing: "2px" }}
             >
               Aishwarya
             </h1>
-            <span className="font-script text-4xl text-[#8B3A4A] my-4 opacity-80 leading-none drop-shadow-md">&</span>
+            <span className="font-playfair text-4xl text-gold my-4 opacity-80 leading-none">&</span>
             <h1 
-              className="font-cinzel text-[54px] md:text-[64px] text-transparent bg-clip-text bg-gradient-to-b from-[#D4AF37] via-[#b58c22] to-[#7a5b0e] leading-none drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]"
-              style={{ textShadow: "0px 1px 1px rgba(255,255,255,0.8), 0px 2px 4px rgba(0,0,0,0.4)" }}
+              className="font-cinzel text-[54px] md:text-[64px] text-ivory leading-none drop-shadow-md"
+              style={{ textShadow: "0 0 30px rgba(201,168,76,.35)", letterSpacing: "2px" }}
             >
               Raghav
             </h1>
@@ -116,71 +116,69 @@ const Hero = () => {
           animate={{ opacity: isOpen ? 0.8 : 0, y: isOpen ? 0 : 20 }}
           transition={{ duration: 1, delay: 1.5 }}
         >
-           <span className="font-cinzel text-lg tracking-[2px] text-[#8B3A4A] mb-2 drop-shadow-sm uppercase">Scroll down</span>
-           <ChevronDown className="w-6 h-6 text-[#8B3A4A] animate-bounce" />
+           <span className="font-playfair text-lg tracking-[2px] text-ivory mb-2 drop-shadow-sm uppercase">Scroll down</span>
+           <ChevronDown className="w-6 h-6 text-gold animate-bounce" />
         </motion.div>
       </motion.div>
 
-      {/* The Grand Full-Screen Envelope */}
+      {/* The Grand Full-Screen Envelope (Now in dark theme) */}
       <AnimatePresence>
         {!isOpen && (
           <div className="absolute inset-0 z-40 overflow-hidden pointer-events-none">
             {/* Top Panel */}
             <motion.div 
-              className="absolute inset-0 bg-refined-ivory origin-top border-b border-[#D8B98A]/30 drop-shadow-[0_15px_30px_rgba(0,0,0,0.2)] pointer-events-auto"
+              className="absolute inset-0 bg-bg-dark origin-top border-b border-gold/30 drop-shadow-[0_15px_30px_rgba(0,0,0,0.4)] pointer-events-auto"
               style={{ 
                 clipPath: 'polygon(0 0, 100% 0, 50% 50%)',
-                backgroundImage: "url('https://www.transparenttextures.com/patterns/cream-paper.png')"
+                backgroundImage: "url('https://www.transparenttextures.com/patterns/black-paper.png')"
               }}
               exit={{ y: "-100%" }}
               transition={{ duration: 1.2, ease: cinematicEase }}
             >
-               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_transparent_50%,_rgba(212,175,55,0.15)_100%)]" />
+               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_transparent_50%,_rgba(201,168,76,0.1)_100%)]" />
             </motion.div>
 
             {/* Bottom Panel */}
             <motion.div 
-              className="absolute inset-0 bg-champagne origin-bottom border-t border-[#D8B98A]/20 drop-shadow-[0_-15px_30px_rgba(0,0,0,0.2)] pointer-events-auto"
+              className="absolute inset-0 bg-[#0F0F0F] origin-bottom border-t border-gold/20 drop-shadow-[0_-15px_30px_rgba(0,0,0,0.4)] pointer-events-auto"
               style={{ 
                 clipPath: 'polygon(50% 50%, 100% 100%, 0 100%)',
-                backgroundImage: "url('https://www.transparenttextures.com/patterns/cream-paper.png')"
+                backgroundImage: "url('https://www.transparenttextures.com/patterns/black-paper.png')"
               }}
               exit={{ y: "100%" }}
               transition={{ duration: 1.2, ease: cinematicEase }}
-            >
-              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/floral-motif.png')] opacity-[0.04] mix-blend-overlay" />
-            </motion.div>
+            />
 
             {/* Left Panel */}
             <motion.div 
-              className="absolute inset-0 bg-[#F6E9D8] origin-left border-r border-[#D8B98A]/10 pointer-events-auto"
+              className="absolute inset-0 bg-[#121212] origin-left border-r border-gold/10 pointer-events-auto"
               style={{ 
                 clipPath: 'polygon(0 0, 50% 50%, 0 100%)',
-                backgroundImage: "url('https://www.transparenttextures.com/patterns/cream-paper.png')"
+                backgroundImage: "url('https://www.transparenttextures.com/patterns/black-paper.png')"
               }}
               exit={{ x: "-100%" }}
               transition={{ duration: 1.2, ease: cinematicEase }}
             >
-              <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(212,175,55,0.1)] pointer-events-none" />
+              <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(201,168,76,0.05)] pointer-events-none" />
             </motion.div>
 
             {/* Right Panel */}
             <motion.div 
-              className="absolute inset-0 bg-[#F6E9D8] origin-right border-l border-[#D8B98A]/10 pointer-events-auto"
+              className="absolute inset-0 bg-[#121212] origin-right border-l border-gold/10 pointer-events-auto"
               style={{ 
                 clipPath: 'polygon(100% 0, 100% 100%, 50% 50%)',
-                backgroundImage: "url('https://www.transparenttextures.com/patterns/cream-paper.png')"
+                backgroundImage: "url('https://www.transparenttextures.com/patterns/black-paper.png')"
               }}
               exit={{ x: "100%" }}
               transition={{ duration: 1.2, ease: cinematicEase }}
             >
-              <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(212,175,55,0.1)] pointer-events-none" />
+              <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(201,168,76,0.05)] pointer-events-none" />
             </motion.div>
           </div>
         )}
       </AnimatePresence>
 
-      {/* Grand Wax Seal */}
+      {/* Grand Wax Seal (Maroon) */}
       <AnimatePresence>
         {!isOpen && (
           <motion.div 
@@ -191,7 +189,7 @@ const Hero = () => {
           >
             {/* Golden Glow Effect behind seal */}
             <motion.div 
-              className="absolute inset-0 bg-[#D4AF37] rounded-full blur-2xl"
+              className="absolute inset-0 bg-gold rounded-full blur-2xl"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ 
                 opacity: isPressed ? 0.9 : 0.2, 
@@ -202,9 +200,9 @@ const Hero = () => {
 
             {/* The Seal Itself */}
             <motion.div
-              className="w-[110px] h-[110px] bg-gradient-to-br from-[#8B3A4A] via-[#5c1c28] to-[#3b0d17] rounded-full flex items-center justify-center border-[3px] border-[#D4AF37] text-champagne font-cinzel text-5xl shadow-[0_25px_80px_rgba(0,0,0,0.5)] relative"
+              className="w-[110px] h-[110px] bg-gradient-to-br from-[#3b0a0a] via-maroon to-[#1f0606] rounded-full flex items-center justify-center border-[3px] border-[#a37e28] text-gold font-cinzel text-5xl shadow-[0_25px_80px_rgba(0,0,0,0.8)] relative"
               style={{ 
-                boxShadow: "inset 0 0 25px rgba(0,0,0,0.9), 0 25px 80px rgba(0,0,0,0.4)",
+                boxShadow: "inset 0 0 25px rgba(0,0,0,0.9), 0 25px 80px rgba(0,0,0,0.6)",
               }}
               animate={{
                 scale: isPressed ? 0.92 : 1,
@@ -213,7 +211,7 @@ const Hero = () => {
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
             >
               {/* Metallic gold text effect */}
-              <span className="drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)] bg-clip-text text-transparent bg-gradient-to-b from-[#FFF2CD] via-[#D4AF37] to-[#997A42] tracking-wider relative top-1">
+              <span className="drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)] bg-clip-text text-transparent bg-gradient-to-b from-[#FFF2CD] via-gold to-[#997A42] tracking-wider relative top-1">
                 A&R
               </span>
             </motion.div>
