@@ -90,7 +90,7 @@ function App() {
                 
                 {/* CSS Wax Seal Overlay to cover the baked-in 'R&Z' */}
                 <div 
-                  className="absolute top-[48%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-20 w-[70px] h-[70px] md:w-[90px] md:h-[90px] bg-gradient-to-br from-[#991b1b] to-[#450a0a] rounded-full flex items-center justify-center shadow-[inset_0_0_15px_rgba(0,0,0,0.6),_0_5px_15px_rgba(0,0,0,0.4)] border border-white/20"
+                  className="absolute top-[55%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-20 w-[70px] h-[70px] md:w-[90px] md:h-[90px] bg-gradient-to-br from-[#991b1b] to-[#450a0a] rounded-full flex items-center justify-center shadow-[inset_0_0_15px_rgba(0,0,0,0.6),_0_5px_15px_rgba(0,0,0,0.4)] border border-white/20"
                 >
                    <span className="font-cinzel text-white text-xl md:text-3xl drop-shadow-md tracking-wider ml-1">
                      A&R
