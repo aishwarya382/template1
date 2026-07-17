@@ -11,13 +11,22 @@ const ScratchCard = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
     
     // Set canvas size to match container
     const resizeCanvas = () => {
       if (containerRef.current) {
-        canvas.width = containerRef.current.offsetWidth;
-        canvas.height = containerRef.current.offsetHeight;
+        const width = containerRef.current.offsetWidth;
+        const height = containerRef.current.offsetHeight;
+        
+        if (width === 0 || height === 0) {
+          // If container isn't ready, try again in 100ms
+          setTimeout(resizeCanvas, 100);
+          return;
+        }
+
+        canvas.width = width;
+        canvas.height = height;
         
         // Fill with metallic silver texture
         if (!isScratched) {
@@ -37,16 +46,25 @@ const ScratchCard = () => {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Add "Scratch to Reveal" text
-      ctx.fillStyle = '#666';
-      ctx.font = '24px "Playfair Display", serif';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText('✨ Scratch to Reveal Your Invitation ✨', canvas.width / 2, canvas.height / 2);
+      const drawText = () => {
+        ctx.fillStyle = '#666';
+        ctx.font = '24px "Playfair Display", serif, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('✨ Scratch to Reveal Your Invitation ✨', canvas.width / 2, canvas.height / 2);
+      };
+
+      if (document.fonts) {
+        document.fonts.ready.then(drawText);
+      } else {
+        drawText();
+      }
     };
 
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    // Initial resize with a slight delay to ensure layout is complete
+    setTimeout(resizeCanvas, 100);
     
+    window.addEventListener('resize', resizeCanvas);
     return () => window.removeEventListener('resize', resizeCanvas);
   }, [isScratched]);
 
@@ -69,7 +87,7 @@ const ScratchCard = () => {
 
   const handlePointerMove = (e) => {
     if (!isDrawing || isScratched) return;
-    e.preventDefault(); // Prevent scrolling on touch
+    if (e.cancelable) e.preventDefault(); // Prevent scrolling on touch
     scratch(e);
   };
 
@@ -80,6 +98,7 @@ const ScratchCard = () => {
 
   const scratch = (e) => {
     const canvas = canvasRef.current;
+    if (!canvas) return;
     const ctx = canvas.getContext('2d');
     const pos = getPointerPos(e);
     
@@ -91,16 +110,18 @@ const ScratchCard = () => {
 
   const checkScratched = () => {
     const canvas = canvasRef.current;
+    if (!canvas) return;
     const ctx = canvas.getContext('2d');
     const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
     
     let transparent = 0;
+    // Check alpha channel (every 4th value)
     for (let i = 3; i < pixels.length; i += 4) {
-      if (pixels[i] === 0) transparent++;
+      if (pixels[i] < 50) transparent++; // < 50 handles anti-aliasing edge cases
     }
     
     const percentage = transparent / (pixels.length / 4);
-    if (percentage > 0.5) { // If 50% scratched, reveal all
+    if (percentage > 0.45) { // If 45% scratched, reveal all
       setIsScratched(true);
     }
   };
