@@ -61,52 +61,69 @@ function App() {
       {/* Flower Shower Particle System */}
       <FlowerShower />
 
-      {/* Entry Overlay - Tap to Open */}
+      {/* Entry Overlay - Red Curtains & Wax Seal */}
       <AnimatePresence>
         {!hasEntered && (
-          <motion.div 
-            className="fixed inset-0 z-[100] flex flex-col items-center justify-center cursor-pointer bg-bg-light"
-            style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cream-paper.png')" }}
-            onClick={handleEnter}
-            exit={{ opacity: 0, scale: 1.05 }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
-          >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_30%,_rgba(255,255,255,0.8)_100%)] pointer-events-none" />
-            
+          <div className="fixed inset-0 z-[100] pointer-events-none flex">
+            {/* Left Curtain */}
             <motion.div 
-              className="text-center relative z-10 flex flex-col items-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 1 }}
+              className="w-1/2 h-full bg-gradient-to-r from-[#5a0000] to-[#8b0000] border-r-2 border-black/30 shadow-[10px_0_30px_rgba(0,0,0,0.7)] relative z-10"
+              initial={{ x: 0 }}
+              exit={{ x: '-100%' }}
+              transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1] }}
+              style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')" }}
+            />
+            {/* Right Curtain */}
+            <motion.div 
+              className="w-1/2 h-full bg-gradient-to-l from-[#5a0000] to-[#8b0000] border-l-2 border-black/30 shadow-[-10px_0_30px_rgba(0,0,0,0.7)] relative z-10"
+              initial={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1] }}
+              style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')" }}
+            />
+            
+            {/* Wax Seal Container (Centered on top of curtains) */}
+            <motion.div 
+              className="absolute inset-0 z-20 flex flex-col items-center justify-center cursor-pointer pointer-events-auto"
+              onClick={handleEnter}
+              exit={{ opacity: 0, scale: 2, filter: 'blur(15px)' }}
+              transition={{ duration: 1, ease: "easeInOut" }}
             >
-              <div className="relative inline-flex items-center justify-center p-8">
-                {/* Outer glowing rings */}
-                <div className="absolute inset-0 rounded-full border border-crimson/20 animate-ping opacity-75" style={{ animationDuration: '3s' }} />
-                <div className="absolute inset-2 rounded-full border border-crimson/40 animate-pulse" style={{ animationDuration: '2s' }} />
+              <motion.div 
+                className="text-center relative flex flex-col items-center"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 1 }}
+              >
+                <div className="relative inline-flex items-center justify-center p-8">
+                  {/* Outer glowing rings */}
+                  <div className="absolute inset-0 rounded-full border border-white/20 animate-ping opacity-75" style={{ animationDuration: '3s' }} />
+                  <div className="absolute inset-2 rounded-full border border-white/40 animate-pulse" style={{ animationDuration: '2s' }} />
+                  
+                  {/* The Red Wax Seal */}
+                  <motion.div 
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="relative z-30 w-[120px] h-[120px] md:w-[150px] md:h-[150px] bg-gradient-to-br from-[#ff1a1a] via-[#dc2626] to-[#8b0000] rounded-full flex flex-col items-center justify-center shadow-[inset_0_0_20px_rgba(0,0,0,0.4),_0_15px_40px_rgba(0,0,0,0.8)] border-2 border-white/30"
+                  >
+                     <span className="font-cinzel text-white text-3xl md:text-5xl drop-shadow-lg tracking-wider">
+                       A&R
+                     </span>
+                     <span className="font-montserrat text-white/90 text-[10px] md:text-xs uppercase tracking-widest mt-2 drop-shadow-md">
+                       Open
+                     </span>
+                  </motion.div>
+                </div>
                 
-                {/* The Red Circle (Wax Seal) */}
-                <motion.div 
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="relative z-20 w-[120px] h-[120px] md:w-[150px] md:h-[150px] bg-gradient-to-br from-[#dc2626] to-[#991b1b] rounded-full flex flex-col items-center justify-center shadow-[inset_0_0_20px_rgba(0,0,0,0.3),_0_10px_30px_rgba(153,27,27,0.4)] border-2 border-white/30"
-                >
-                   <span className="font-cinzel text-white text-3xl md:text-5xl drop-shadow-md tracking-wider">
-                     A&R
-                   </span>
-                   <span className="font-montserrat text-white/80 text-[10px] md:text-xs uppercase tracking-widest mt-2">
-                     Open
-                   </span>
-                </motion.div>
-              </div>
-              
-              <div className="flex flex-col items-center gap-3 mt-12 animate-pulse">
-                <span className="font-cinzel tracking-editorial text-xs md:text-sm text-crimson/80 uppercase">
-                  Tap the seal to enter
-                </span>
-                <ChevronDown className="w-5 h-5 text-crimson/60" />
-              </div>
+                <div className="flex flex-col items-center gap-3 mt-12 animate-pulse">
+                  <span className="font-cinzel tracking-editorial text-xs md:text-sm text-white/90 uppercase drop-shadow-md">
+                    Tap the seal to enter
+                  </span>
+                  <ChevronDown className="w-5 h-5 text-white/80 drop-shadow-md" />
+                </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
+          </div>
         )}
       </AnimatePresence>
 
