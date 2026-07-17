@@ -64,7 +64,10 @@ function App() {
       {/* Entry Overlay - Red Curtains & Wax Seal */}
       <AnimatePresence>
         {!hasEntered && (
-          <div className="fixed inset-0 z-[100] pointer-events-none flex bg-white">
+          <motion.div 
+            className="fixed inset-0 z-[100] pointer-events-none flex"
+            exit={{ opacity: 1, transition: { duration: 1.5 } }}
+          >
             {/* Left Curtain */}
             <motion.div 
               className="w-1/2 h-full border-r-2 border-black/30 shadow-[10px_0_30px_rgba(0,0,0,0.7)] relative z-10"
