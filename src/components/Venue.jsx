@@ -17,14 +17,19 @@ const Venue = () => {
           <div className="flex justify-center mb-6">
             <MapPin className="text-crimson w-12 h-12" />
           </div>
-          <h3 className="font-playfair text-3xl text-crimson-light mb-4">The Grand Taj Palace</h3>
+          <h3 className="font-playfair text-3xl text-crimson mb-4">Yamuna Palace Marriage Hall</h3>
           <p className="font-montserrat text-lg text-charcoal/80 leading-relaxed mb-8 text-center">
-            1 Diplomatic Enclave, Chanakyapuri<br/>
-            New Delhi, 110021<br/>
-            India
+            319/1, Mullupadi Village<br/>
+            Pollachi Main Rd, Mulluppadi<br/>
+            Tamil Nadu – 642109
           </p>
           <div className="pt-2 flex justify-center">
-            <a href="#" className="btn-luxury inline-block text-sm uppercase tracking-[2px]">
+            <a 
+              href="https://www.google.com/maps/search/?api=1&query=Yamuna+Palace+Marriage+Hall+Pollachi" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="btn-luxury inline-block text-sm uppercase tracking-[2px]"
+            >
               View Map
             </a>
           </div>
