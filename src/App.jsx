@@ -106,10 +106,7 @@ function App() {
                     whileTap={{ scale: 0.95 }}
                     className="relative z-30 w-[120px] h-[120px] md:w-[150px] md:h-[150px] bg-gradient-to-br from-[#ff1a1a] via-[#dc2626] to-[#8b0000] rounded-full flex flex-col items-center justify-center shadow-[inset_0_0_20px_rgba(0,0,0,0.4),_0_15px_40px_rgba(0,0,0,0.8)] border-2 border-white/30"
                   >
-                     <span className="font-cinzel text-white text-3xl md:text-5xl drop-shadow-lg tracking-wider">
-                       A&R
-                     </span>
-                     <span className="font-montserrat text-white/90 text-[10px] md:text-xs uppercase tracking-widest mt-2 drop-shadow-md">
+                     <span className="font-montserrat text-white/90 text-[10px] md:text-xs uppercase tracking-widest drop-shadow-md">
                        Open
                      </span>
                   </motion.div>
