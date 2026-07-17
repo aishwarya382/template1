@@ -79,18 +79,29 @@ function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 1 }}
             >
-              <div className="relative inline-block">
-                <img 
-                  src="/envelope-ar.png" 
-                  alt="Open your invitation" 
-                  className="w-full max-w-[320px] md:max-w-[440px] drop-shadow-[0_15px_30px_rgba(0,0,0,0.2)] relative z-10 rounded-lg"
-                  draggable="false"
-                />
+              <div className="relative inline-flex items-center justify-center p-8">
+                {/* Outer glowing rings */}
+                <div className="absolute inset-0 rounded-full border border-crimson/20 animate-ping opacity-75" style={{ animationDuration: '3s' }} />
+                <div className="absolute inset-2 rounded-full border border-crimson/40 animate-pulse" style={{ animationDuration: '2s' }} />
+                
+                {/* The Red Circle (Wax Seal) */}
+                <motion.div 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="relative z-20 w-[120px] h-[120px] md:w-[150px] md:h-[150px] bg-gradient-to-br from-[#dc2626] to-[#991b1b] rounded-full flex flex-col items-center justify-center shadow-[inset_0_0_20px_rgba(0,0,0,0.3),_0_10px_30px_rgba(153,27,27,0.4)] border-2 border-white/30"
+                >
+                   <span className="font-cinzel text-white text-3xl md:text-5xl drop-shadow-md tracking-wider">
+                     A&R
+                   </span>
+                   <span className="font-montserrat text-white/80 text-[10px] md:text-xs uppercase tracking-widest mt-2">
+                     Open
+                   </span>
+                </motion.div>
               </div>
               
-              <div className="flex flex-col items-center gap-3 mt-8 animate-pulse">
+              <div className="flex flex-col items-center gap-3 mt-12 animate-pulse">
                 <span className="font-cinzel tracking-editorial text-xs md:text-sm text-crimson/80 uppercase">
-                  Tap to Open
+                  Tap the seal to enter
                 </span>
                 <ChevronDown className="w-5 h-5 text-crimson/60" />
               </div>
