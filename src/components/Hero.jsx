@@ -86,24 +86,24 @@ const Hero = () => {
           ))}
         </div>
 
-        {/* Light Luxury Glass Card */}
-        <div className="relative w-[90%] max-w-lg mx-auto h-[85vh] flex flex-col items-center justify-start pt-20 z-20 glass-card-light">
+        {/* Text Content (No Card) */}
+        <div className="relative w-full max-w-3xl mx-auto h-[85vh] flex flex-col items-center justify-start pt-24 z-20">
           
-          <h3 className="font-playfair text-3xl md:text-4xl tracking-[2px] text-gold-dark mb-4 drop-shadow-sm opacity-90">Wedding Day</h3>
-          <p className="font-montserrat text-sm md:text-base tracking-[3px] text-charcoal mb-16 opacity-90 uppercase font-semibold">27 September 2026</p>
+          <h3 className="font-playfair text-3xl md:text-4xl tracking-[2px] text-gold mb-4 drop-shadow-sm opacity-90">Wedding Day</h3>
+          <p className="font-montserrat text-sm md:text-base tracking-[3px] text-ivory mb-16 opacity-90 uppercase font-semibold">27 September 2026</p>
           
           {/* Couple Names */}
           <div className="flex flex-col items-center justify-center space-y-2">
             <h1 
-              className="font-cinzel text-[54px] md:text-[64px] text-charcoal leading-none"
-              style={{ textShadow: "0 2px 10px rgba(212,175,55,0.3)", letterSpacing: "2px" }}
+              className="font-cinzel text-[54px] md:text-[64px] text-ivory leading-none"
+              style={{ textShadow: "0 2px 15px rgba(0,0,0,0.5)", letterSpacing: "2px" }}
             >
               Aishwarya
             </h1>
-            <span className="font-playfair text-4xl text-gold-dark my-4 opacity-80 leading-none">&</span>
+            <span className="font-playfair text-4xl text-gold my-4 opacity-80 leading-none">&</span>
             <h1 
-              className="font-cinzel text-[54px] md:text-[64px] text-charcoal leading-none"
-              style={{ textShadow: "0 2px 10px rgba(212,175,55,0.3)", letterSpacing: "2px" }}
+              className="font-cinzel text-[54px] md:text-[64px] text-ivory leading-none"
+              style={{ textShadow: "0 2px 15px rgba(0,0,0,0.5)", letterSpacing: "2px" }}
             >
               Raghav
             </h1>
@@ -116,8 +116,8 @@ const Hero = () => {
             animate={{ opacity: isOpen ? 0.8 : 0, y: isOpen ? 0 : 10 }}
             transition={{ duration: 1, delay: 1.5 }}
           >
-             <span className="font-playfair text-lg tracking-[2px] text-charcoal mb-2 drop-shadow-sm uppercase text-center">Scroll down</span>
-             <ChevronDown className="w-6 h-6 text-gold-dark animate-bounce mx-auto" />
+             <span className="font-playfair text-lg tracking-[2px] text-ivory mb-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] uppercase text-center">Scroll down</span>
+             <ChevronDown className="w-6 h-6 text-gold animate-bounce mx-auto filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]" />
           </motion.div>
         </div>
       </motion.div>
