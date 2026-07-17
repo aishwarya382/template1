@@ -81,20 +81,11 @@ function App() {
             >
               <div className="relative inline-block">
                 <img 
-                  src="https://pub-96ce671efbac4dbfbc89b044c631a913.r2.dev/ChatGPT%20Image%20Jun%2023%2C%202026%2C%2004_40_29%20PM.png" 
+                  src="/envelope-ar.png" 
                   alt="Open your invitation" 
-                  className="w-full max-w-[320px] md:max-w-[440px] drop-shadow-[0_15px_30px_rgba(0,0,0,0.2)] relative z-10"
+                  className="w-full max-w-[320px] md:max-w-[440px] drop-shadow-[0_15px_30px_rgba(0,0,0,0.2)] relative z-10 rounded-lg"
                   draggable="false"
                 />
-                
-                {/* CSS Wax Seal Overlay to cover the baked-in 'R&Z' */}
-                <div 
-                  className="absolute top-[55%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-20 w-[70px] h-[70px] md:w-[90px] md:h-[90px] bg-gradient-to-br from-[#991b1b] to-[#450a0a] rounded-full flex items-center justify-center shadow-[inset_0_0_15px_rgba(0,0,0,0.6),_0_5px_15px_rgba(0,0,0,0.4)] border border-white/20"
-                >
-                   <span className="font-cinzel text-white text-xl md:text-3xl drop-shadow-md tracking-wider ml-1">
-                     A&R
-                   </span>
-                </div>
               </div>
               
               <div className="flex flex-col items-center gap-3 mt-8 animate-pulse">
