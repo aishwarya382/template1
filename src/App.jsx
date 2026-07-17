@@ -52,7 +52,7 @@ function App() {
   };
 
   return (
-    <div className="font-lora bg-ivory text-charcoal min-h-screen overflow-x-hidden relative">
+    <div className="font-lora bg-bg-red text-ivory min-h-screen overflow-x-hidden relative">
       <Navbar />
       {/* Background Music Player */}
       <audio ref={audioRef} src="/background-music.webm" loop />
@@ -60,7 +60,7 @@ function App() {
       {/* Floating Music Controller */}
       <button 
         onClick={toggleMusic}
-        className="fixed bottom-6 right-6 z-50 w-12 h-12 bg-ivory/80 backdrop-blur-md rounded-full flex items-center justify-center border border-gold/40 shadow-glass-light hover:scale-110 transition-transform text-gold-dark"
+        className="fixed bottom-6 right-6 z-50 w-12 h-12 bg-maroon/80 backdrop-blur-md rounded-full flex items-center justify-center border border-gold/40 shadow-[0_4px_15px_rgba(0,0,0,0.5)] hover:scale-110 transition-transform text-gold-light"
       >
         {isPlaying ? <Volume2 size={24} /> : <VolumeX size={24} />}
       </button>

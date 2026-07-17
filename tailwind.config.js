@@ -7,6 +7,9 @@ export default {
   theme: {
     extend: {
       colors: {
+        'bg-red': '#450a0a',
+        'maroon': '#7f1d1d',
+        'crimson': '#991b1b',
         'ivory': '#FDFBF7',
         'charcoal': '#1F1F1F',
         'gold': '#D4AF37',

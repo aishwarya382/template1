@@ -153,11 +153,11 @@ const Countdown = () => {
   }, [isRevealed]);
 
   return (
-    <section className="py-20 bg-transparent text-charcoal relative overflow-hidden">
+    <section className="py-20 bg-transparent text-ivory relative overflow-hidden">
       <div className="container-luxury relative z-10 flex flex-col items-center">
         
         {/* The Countdown Section */}
-        <h2 className="section-title text-gold-dark mb-12">The Final Countdown</h2>
+        <h2 className="section-title text-gold mb-12">The Final Countdown</h2>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -166,11 +166,11 @@ const Countdown = () => {
           className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-20"
         >
           {Object.entries(timeLeft).map(([unit, value]) => (
-            <div key={unit} className="count-box-light flex flex-col items-center justify-center w-24 sm:w-28 py-6">
-              <h2 className="drop-shadow-sm text-gold-dark animate-pulse text-4xl sm:text-5xl">
+            <div key={unit} className="count-box-red flex flex-col items-center justify-center w-24 sm:w-28 py-6">
+              <h2 className="drop-shadow-sm text-gold-light animate-pulse text-4xl sm:text-5xl">
                 {String(value).padStart(2, '0')}
               </h2>
-              <span className="text-[10px] sm:text-xs font-montserrat uppercase tracking-[2px] text-charcoal/70 mt-3 font-semibold">
+              <span className="text-[10px] sm:text-xs font-montserrat uppercase tracking-[2px] text-ivory/80 mt-3 font-semibold">
                 {unit}
               </span>
             </div>
@@ -178,21 +178,21 @@ const Countdown = () => {
         </motion.div>
 
         {/* The Scratch to Reveal Section */}
-        <div className="relative w-full max-w-2xl h-[250px] rounded-3xl overflow-hidden shadow-glass-light border border-gold/30">
+        <div className="relative w-full max-w-2xl h-[250px] rounded-3xl overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.6)] border border-gold/30">
           
           {/* The Hidden Content (Special Message) */}
-          <div className="absolute inset-0 bg-ivory/95 backdrop-blur-xl flex items-center justify-center p-8 text-center">
+          <div className="absolute inset-0 bg-maroon/95 backdrop-blur-xl flex items-center justify-center p-8 text-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: isRevealed ? 1 : 0, scale: isRevealed ? 1 : 0.9 }}
               transition={{ duration: 0.8 }}
               className="flex flex-col items-center justify-center space-y-4"
             >
-              <h3 className="font-playfair text-2xl text-gold-dark">✨ REVEALED ✨</h3>
-              <p className="font-montserrat text-lg text-charcoal/90">
+              <h3 className="font-playfair text-2xl text-gold-light">✨ REVEALED ✨</h3>
+              <p className="font-montserrat text-lg text-ivory/90">
                 We can't wait to celebrate with you!
               </p>
-              <p className="font-montserrat text-sm font-semibold tracking-widest text-gold-dark uppercase mt-2 border-t border-gold/30 pt-4">
+              <p className="font-montserrat text-sm font-semibold tracking-widest text-gold uppercase mt-2 border-t border-gold/30 pt-4">
                 Dress Code: Traditional / Elegant
               </p>
               

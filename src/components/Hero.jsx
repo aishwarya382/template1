@@ -123,29 +123,29 @@ const Hero = () => {
         </div>
       </motion.div>
 
-      {/* The Grand Full-Screen Envelope (Ivory Theme) */}
+      {/* The Grand Full-Screen Envelope (Red Theme) */}
       <AnimatePresence>
         {!isOpen && (
           <div className="absolute inset-0 z-40 overflow-hidden pointer-events-none">
             {/* Top Panel */}
             <motion.div 
-              className="absolute inset-0 bg-ivory origin-top border-b border-gold/30 drop-shadow-[0_15px_30px_rgba(0,0,0,0.1)] pointer-events-auto"
+              className="absolute inset-0 bg-bg-red origin-top border-b border-gold/30 drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)] pointer-events-auto"
               style={{ 
                 clipPath: 'polygon(0 0, 100% 0, 50% 50%)',
-                backgroundImage: "url('https://www.transparenttextures.com/patterns/cream-paper.png')"
+                backgroundImage: "url('https://www.transparenttextures.com/patterns/black-paper.png')"
               }}
               exit={{ y: "-100%" }}
               transition={{ duration: 1.2, ease: cinematicEase }}
             >
-               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_transparent_50%,_rgba(212,175,55,0.15)_100%)]" />
+               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_transparent_50%,_rgba(212,175,55,0.2)_100%)]" />
             </motion.div>
 
             {/* Bottom Panel */}
             <motion.div 
-              className="absolute inset-0 bg-[#FDFBF7] origin-bottom border-t border-gold/20 drop-shadow-[0_-15px_30px_rgba(0,0,0,0.1)] pointer-events-auto"
+              className="absolute inset-0 bg-maroon origin-bottom border-t border-gold/20 drop-shadow-[0_-15px_30px_rgba(0,0,0,0.8)] pointer-events-auto"
               style={{ 
                 clipPath: 'polygon(50% 50%, 100% 100%, 0 100%)',
-                backgroundImage: "url('https://www.transparenttextures.com/patterns/cream-paper.png')"
+                backgroundImage: "url('https://www.transparenttextures.com/patterns/black-paper.png')"
               }}
               exit={{ y: "100%" }}
               transition={{ duration: 1.2, ease: cinematicEase }}
@@ -153,28 +153,28 @@ const Hero = () => {
 
             {/* Left Panel */}
             <motion.div 
-              className="absolute inset-0 bg-[#F8F5EE] origin-left border-r border-gold/10 pointer-events-auto"
+              className="absolute inset-0 bg-[#5c0f0f] origin-left border-r border-gold/10 pointer-events-auto"
               style={{ 
                 clipPath: 'polygon(0 0, 50% 50%, 0 100%)',
-                backgroundImage: "url('https://www.transparenttextures.com/patterns/cream-paper.png')"
+                backgroundImage: "url('https://www.transparenttextures.com/patterns/black-paper.png')"
               }}
               exit={{ x: "-100%" }}
               transition={{ duration: 1.2, ease: cinematicEase }}
             >
-              <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(212,175,55,0.05)] pointer-events-none" />
+              <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(0,0,0,0.5)] pointer-events-none" />
             </motion.div>
 
             {/* Right Panel */}
             <motion.div 
-              className="absolute inset-0 bg-[#F8F5EE] origin-right border-l border-gold/10 pointer-events-auto"
+              className="absolute inset-0 bg-[#5c0f0f] origin-right border-l border-gold/10 pointer-events-auto"
               style={{ 
                 clipPath: 'polygon(100% 0, 100% 100%, 50% 50%)',
-                backgroundImage: "url('https://www.transparenttextures.com/patterns/cream-paper.png')"
+                backgroundImage: "url('https://www.transparenttextures.com/patterns/black-paper.png')"
               }}
               exit={{ x: "100%" }}
               transition={{ duration: 1.2, ease: cinematicEase }}
             >
-              <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(212,175,55,0.05)] pointer-events-none" />
+              <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(0,0,0,0.5)] pointer-events-none" />
             </motion.div>
           </div>
         )}

@@ -15,9 +15,9 @@ const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   return (
-    <section className="py-24 bg-transparent text-charcoal">
+    <section className="py-24 bg-transparent text-ivory">
       <div className="container-luxury">
-        <h2 className="section-title text-gold-dark">Captured Moments</h2>
+        <h2 className="section-title text-gold">Captured Moments</h2>
         
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
           {IMAGES.map((img, index) => (
@@ -27,7 +27,7 @@ const Gallery = () => {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.15, duration: 0.6 }}
-              className="glass-card-light overflow-hidden cursor-pointer aspect-square relative group p-2"
+              className="glass-card-red overflow-hidden cursor-pointer aspect-square relative group p-2"
               onClick={() => setSelectedImage(index)}
             >
               <div className="w-full h-full overflow-hidden rounded-xl relative">
@@ -37,7 +37,7 @@ const Gallery = () => {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gold/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center backdrop-blur-[2px]">
-                  <span className="font-playfair text-ivory text-xl md:text-2xl drop-shadow-md transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  <span className="font-playfair text-ivory text-xl md:text-2xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                     View
                   </span>
                 </div>
@@ -50,20 +50,20 @@ const Gallery = () => {
       <AnimatePresence>
         {selectedImage !== null && (
           <motion.div 
-            className="fixed inset-0 z-50 flex items-center justify-center bg-ivory/95 backdrop-blur-md p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-bg-red/95 backdrop-blur-md p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
             <button 
-              className="absolute top-6 right-6 text-gold-dark hover:text-gold transition-colors z-50 bg-ivory rounded-full p-2 shadow-glass-light"
+              className="absolute top-6 right-6 text-gold hover:text-gold-light transition-colors z-50 bg-maroon rounded-full p-2 shadow-[0_4px_15px_rgba(0,0,0,0.5)] border border-gold/30"
               onClick={() => setSelectedImage(null)}
             >
               <X size={32} />
             </button>
             
             <button 
-              className="absolute left-6 text-gold-dark hover:text-gold transition-colors z-50 bg-ivory rounded-full p-2 shadow-glass-light"
+              className="absolute left-6 text-gold hover:text-gold-light transition-colors z-50 bg-maroon rounded-full p-2 shadow-[0_4px_15px_rgba(0,0,0,0.5)] border border-gold/30"
               onClick={() => setSelectedImage((prev) => (prev > 0 ? prev - 1 : IMAGES.length - 1))}
             >
               <ChevronLeft size={32} />
@@ -71,12 +71,12 @@ const Gallery = () => {
             
             <img 
               src={IMAGES[selectedImage]} 
-              className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-luxury border border-gold/20"
+              className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-gold/20"
               alt="Selected"
             />
             
             <button 
-              className="absolute right-6 text-gold-dark hover:text-gold transition-colors z-50 bg-ivory rounded-full p-2 shadow-glass-light"
+              className="absolute right-6 text-gold hover:text-gold-light transition-colors z-50 bg-maroon rounded-full p-2 shadow-[0_4px_15px_rgba(0,0,0,0.5)] border border-gold/30"
               onClick={() => setSelectedImage((prev) => (prev < IMAGES.length - 1 ? prev + 1 : 0))}
             >
               <ChevronRight size={32} />
