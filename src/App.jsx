@@ -64,22 +64,22 @@ function App() {
       {/* Entry Overlay - Red Curtains & Wax Seal */}
       <AnimatePresence>
         {!hasEntered && (
-          <div className="fixed inset-0 z-[100] pointer-events-none flex">
+          <div className="fixed inset-0 z-[100] pointer-events-none flex bg-white">
             {/* Left Curtain */}
             <motion.div 
-              className="w-1/2 h-full bg-gradient-to-r from-[#5a0000] to-[#8b0000] border-r-2 border-black/30 shadow-[10px_0_30px_rgba(0,0,0,0.7)] relative z-10"
+              className="w-1/2 h-full border-r-2 border-black/30 shadow-[10px_0_30px_rgba(0,0,0,0.7)] relative z-10"
               initial={{ x: 0 }}
               exit={{ x: '-100%' }}
               transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1] }}
-              style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')" }}
+              style={{ backgroundColor: '#8b0000', backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')" }}
             />
             {/* Right Curtain */}
             <motion.div 
-              className="w-1/2 h-full bg-gradient-to-l from-[#5a0000] to-[#8b0000] border-l-2 border-black/30 shadow-[-10px_0_30px_rgba(0,0,0,0.7)] relative z-10"
+              className="w-1/2 h-full border-l-2 border-black/30 shadow-[-10px_0_30px_rgba(0,0,0,0.7)] relative z-10"
               initial={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1] }}
-              style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')" }}
+              style={{ backgroundColor: '#8b0000', backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')" }}
             />
             
             {/* Wax Seal Container (Centered on top of curtains) */}
@@ -105,7 +105,11 @@ function App() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="relative z-30 w-[100px] h-[100px] md:w-[130px] md:h-[130px] bg-gradient-to-br from-[#ff1a1a] via-[#dc2626] to-[#8b0000] rounded-full flex flex-col items-center justify-center shadow-[inset_0_0_20px_rgba(0,0,0,0.4),_0_15px_40px_rgba(0,0,0,0.8)] border-2 border-white/30"
-                  />
+                  >
+                     <span className="font-montserrat text-white/90 text-[10px] md:text-xs uppercase tracking-widest drop-shadow-md font-semibold">
+                       Open
+                     </span>
+                  </motion.div>
                 </div>
               </motion.div>
             </motion.div>
