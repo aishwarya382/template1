@@ -70,9 +70,14 @@ function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 1 }}
             >
-              <h1 className="font-cinzel text-5xl md:text-6xl text-gold mb-12 drop-shadow-sm">A & R</h1>
+              <img 
+                src="https://pub-96ce671efbac4dbfbc89b044c631a913.r2.dev/ChatGPT%20Image%20Jun%2023%2C%202026%2C%2004_40_29%20PM.png" 
+                alt="Open your invitation" 
+                className="w-full max-w-[320px] md:max-w-[440px] drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)]"
+                draggable="false"
+              />
               
-              <div className="flex flex-col items-center gap-3 mt-16 animate-pulse">
+              <div className="flex flex-col items-center gap-3 mt-8 animate-pulse">
                 <span className="font-cinzel tracking-editorial text-xs md:text-sm text-gold-light/80 uppercase">
                   Tap to Open
                 </span>
