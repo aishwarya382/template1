@@ -4,36 +4,15 @@ import { Calendar } from 'lucide-react';
 
 const SaveCalendar = () => {
   const handleSaveCalendar = () => {
-    // ics generation logic
-    const event = {
-      title: 'Aishwarya & Raghav Wedding',
-      description: 'Join us as we celebrate the wedding of Aishwarya & Raghav.',
-      location: 'Yamuna Palace Marriage Hall, 319/1, Mullupadi Village, Pollachi Main Rd, Tamil Nadu – 642109',
-      startTime: '20260927T123000Z', // 6:00 PM IST is 12:30 PM UTC
-      endTime: '20260927T153000Z',   // 9:00 PM IST is 3:30 PM UTC
-    };
+    const title = encodeURIComponent('Aishwarya & Raghav Wedding');
+    const description = encodeURIComponent('Join us as we celebrate the wedding of Aishwarya & Raghav.');
+    const location = encodeURIComponent('Yamuna Palace Marriage Hall, 319/1, Mullupadi Village, Pollachi Main Rd, Tamil Nadu – 642109');
+    const startTime = '20260927T123000Z'; // 6:00 PM IST is 12:30 PM UTC
+    const endTime = '20260927T153000Z';   // 9:00 PM IST is 3:30 PM UTC
 
-    const icsContent = `BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//Aishwarya and Raghav Wedding//EN
-BEGIN:VEVENT
-UID:${new Date().getTime()}@wedding.com
-DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0]}Z
-DTSTART:${event.startTime}
-DTEND:${event.endTime}
-SUMMARY:${event.title}
-DESCRIPTION:${event.description}
-LOCATION:${event.location}
-END:VEVENT
-END:VCALENDAR`;
+    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startTime}/${endTime}&details=${description}&location=${location}`;
 
-    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-    const link = document.createElement('a');
-    link.href = window.URL.createObjectURL(blob);
-    link.setAttribute('download', 'Aishwarya_Raghav_Wedding.ics');
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    window.open(googleCalendarUrl, '_blank');
   };
 
   return (
