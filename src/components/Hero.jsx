@@ -89,6 +89,7 @@ const Hero = () => {
         {/* Text Content (No Card) */}
         <div className="relative w-full max-w-3xl mx-auto h-[85vh] flex flex-col items-center justify-start pt-24 z-20">
           
+          <h2 className="font-script text-5xl md:text-6xl text-gold mb-6 drop-shadow-sm opacity-90">A & R</h2>
           <h3 className="font-playfair text-3xl md:text-4xl tracking-[2px] text-gold mb-4 drop-shadow-sm opacity-90">Wedding Day</h3>
           <p className="font-montserrat text-sm md:text-base tracking-[3px] text-ivory mb-16 opacity-90 uppercase font-semibold">27 September 2026</p>
           
@@ -116,7 +117,7 @@ const Hero = () => {
             animate={{ opacity: isOpen ? 0.8 : 0, y: isOpen ? 0 : 10 }}
             transition={{ duration: 1, delay: 1.5 }}
           >
-             <span className="font-playfair text-lg tracking-[2px] text-ivory mb-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] uppercase text-center">Scroll down</span>
+             <span className="font-playfair text-lg tracking-[2px] text-ivory mb-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] uppercase text-center">Begin the Celebration</span>
              <ChevronDown className="w-6 h-6 text-gold animate-bounce mx-auto filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]" />
           </motion.div>
         </div>

@@ -13,7 +13,10 @@ const RSVP = () => {
   return (
     <section className="py-24 bg-transparent text-charcoal">
       <div className="container-luxury">
-        <h2 className="section-title">RSVP</h2>
+        <h2 className="section-title">Will You Celebrate With Us?</h2>
+        <p className="text-center font-montserrat text-lg text-charcoal/80 max-w-2xl mx-auto mb-12">
+          Your presence would mean the world to us. Kindly let us know if you will be joining our special day.
+        </p>
         <motion.div 
           className="glass-card-light max-w-2xl mx-auto p-10 md:p-14"
           initial={{ opacity: 0, y: 30 }}
@@ -44,15 +47,15 @@ const RSVP = () => {
                 {...register("attending")} 
                 className="w-full bg-ivory/80 border border-gold/30 rounded-xl px-4 py-3 text-charcoal focus:outline-none focus:border-gold-dark focus:ring-1 focus:ring-gold transition-colors appearance-none"
               >
-                <option value="yes">Joyfully Accept</option>
-                <option value="no">Regretfully Decline</option>
+                <option value="yes">Yes, I will be there</option>
+                <option value="no">Sorry, I cannot attend</option>
               </select>
             </div>
             <button 
               type="submit"
               className="w-full btn-luxury font-playfair text-xl py-4 mt-6 text-center"
             >
-              Send RSVP
+              Confirm Attendance
             </button>
           </form>
         </motion.div>

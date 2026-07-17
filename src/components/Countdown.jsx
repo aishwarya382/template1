@@ -13,8 +13,8 @@ const Countdown = () => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    // September 27, 2026
-    const targetDate = new Date("2026-09-27T00:00:00").getTime();
+    // September 27, 2026 06:00 PM
+    const targetDate = new Date("2026-09-27T18:00:00").getTime();
 
     const interval = setInterval(() => {
       const now = new Date().getTime();
@@ -58,12 +58,17 @@ const Countdown = () => {
 
     const drawText = () => {
       ctx.fillStyle = '#FFFFFF';
-      ctx.font = '26px "Cinzel Decorative", serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.shadowColor = 'rgba(0,0,0,0.6)';
       ctx.shadowBlur = 8;
-      ctx.fillText('Scratch to Reveal', canvas.width / 2, canvas.height / 2);
+
+      ctx.font = '20px "Montserrat", sans-serif';
+      ctx.fillText('🎁 SPECIAL MESSAGE', canvas.width / 2, canvas.height / 2 - 20);
+
+      ctx.font = '28px "Cinzel Decorative", serif';
+      ctx.fillText('Scratch to Reveal', canvas.width / 2, canvas.height / 2 + 20);
+      
       ctx.shadowBlur = 0;
     };
     drawText();
@@ -83,7 +88,7 @@ const Countdown = () => {
       ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
       
       // Add a golden tint over the glitter for richness
-      ctx.fillStyle = 'rgba(212,175,55,0.3)';
+      ctx.fillStyle = 'rgba(212,175,55,0.4)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       drawText();
@@ -119,9 +124,9 @@ const Countdown = () => {
       ctx.arc(x, y, 40, 0, Math.PI * 2);
       ctx.fill();
 
-      // Very rough check to reveal entirely if sufficiently scratched
+      // Check to reveal entirely if sufficiently scratched
       scratchedPixels += (Math.PI * 40 * 40);
-      if (scratchedPixels > totalPixels * 0.4) {
+      if (scratchedPixels > totalPixels * 0.45) {
         setIsRevealed(true);
       }
     };
@@ -151,28 +156,53 @@ const Countdown = () => {
     <section className="py-20 bg-transparent text-charcoal relative overflow-hidden">
       <div className="container-luxury relative z-10 flex flex-col items-center">
         
-        <h2 className="section-title text-gold-dark">The Final Countdown</h2>
+        {/* The Countdown Section */}
+        <h2 className="section-title text-gold-dark mb-12">The Final Countdown</h2>
 
-        <div className="relative w-full max-w-3xl h-[280px] sm:h-[220px] rounded-3xl overflow-hidden shadow-glass-light border border-gold/30">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-20"
+        >
+          {Object.entries(timeLeft).map(([unit, value]) => (
+            <div key={unit} className="count-box-light flex flex-col items-center justify-center w-24 sm:w-28 py-6">
+              <h2 className="drop-shadow-sm text-gold-dark animate-pulse text-4xl sm:text-5xl">
+                {String(value).padStart(2, '0')}
+              </h2>
+              <span className="text-[10px] sm:text-xs font-montserrat uppercase tracking-[2px] text-charcoal/70 mt-3 font-semibold">
+                {unit}
+              </span>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* The Scratch to Reveal Section */}
+        <div className="relative w-full max-w-2xl h-[250px] rounded-3xl overflow-hidden shadow-glass-light border border-gold/30">
           
-          {/* The Hidden Content (Countdown) */}
-          <div className="absolute inset-0 bg-ivory/90 backdrop-blur-md flex items-center justify-center">
+          {/* The Hidden Content (Special Message) */}
+          <div className="absolute inset-0 bg-ivory/95 backdrop-blur-xl flex items-center justify-center p-8 text-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: isRevealed ? 1 : 0.4, scale: isRevealed ? 1 : 0.9 }}
+              animate={{ opacity: isRevealed ? 1 : 0, scale: isRevealed ? 1 : 0.9 }}
               transition={{ duration: 0.8 }}
-              className="flex flex-wrap justify-center gap-4 sm:gap-8 p-6"
+              className="flex flex-col items-center justify-center space-y-4"
             >
-              {Object.entries(timeLeft).map(([unit, value]) => (
-                <div key={unit} className="count-box-light flex flex-col items-center justify-center w-20 sm:w-28">
-                  <h2 className="drop-shadow-sm text-gold-dark animate-pulse text-3xl sm:text-4xl">
-                    {String(value).padStart(2, '0')}
-                  </h2>
-                  <span className="text-[10px] sm:text-xs font-montserrat uppercase tracking-[2px] text-charcoal/70 mt-2 font-semibold">
-                    {unit}
-                  </span>
-                </div>
-              ))}
+              <h3 className="font-playfair text-2xl text-gold-dark">✨ REVEALED ✨</h3>
+              <p className="font-montserrat text-lg text-charcoal/90">
+                We can't wait to celebrate with you!
+              </p>
+              <p className="font-montserrat text-sm font-semibold tracking-widest text-gold-dark uppercase mt-2 border-t border-gold/30 pt-4">
+                Dress Code: Traditional / Elegant
+              </p>
+              
+              {/* Sparkle effects */}
+              {isRevealed && (
+                <>
+                  <motion.div className="absolute -top-4 -left-4 w-8 h-8 bg-gold rounded-full filter blur-xl opacity-50" animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.8, 0.3] }} transition={{ repeat: Infinity, duration: 2 }} />
+                  <motion.div className="absolute -bottom-4 -right-4 w-8 h-8 bg-gold rounded-full filter blur-xl opacity-50" animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.8, 0.3] }} transition={{ repeat: Infinity, duration: 2.5, delay: 0.5 }} />
+                </>
+              )}
             </motion.div>
           </div>
 
