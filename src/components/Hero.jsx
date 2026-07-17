@@ -111,7 +111,7 @@ const Hero = () => {
           
           {/* Scroll Down Indicator */}
           <motion.div 
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-80 w-full"
+            className="flex flex-col items-center opacity-80 w-full mt-12 md:mt-16"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: isOpen ? 0.8 : 0, y: isOpen ? 0 : 10 }}
             transition={{ duration: 1, delay: 1.5 }}
