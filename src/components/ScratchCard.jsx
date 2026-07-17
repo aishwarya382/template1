@@ -133,7 +133,7 @@ const ScratchCard = () => {
         
         <div 
           ref={containerRef}
-          className="relative max-w-2xl mx-auto h-[450px] md:h-[500px] glass-card-light overflow-hidden shadow-2xl mt-12 rounded-xl border-2 border-crimson/20"
+          className="relative max-w-2xl mx-auto h-[550px] md:h-[650px] glass-card-light overflow-hidden shadow-2xl mt-12 rounded-xl border-2 border-crimson/20"
         >
           {/* Revealed Content */}
           <div className="absolute inset-0 flex flex-col items-center justify-center p-8 bg-white/80">
