@@ -108,17 +108,18 @@ const Hero = () => {
               Raghav
             </h1>
           </div>
+          
+          {/* Scroll Down Indicator */}
+          <motion.div 
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-80 w-full"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: isOpen ? 0.8 : 0, y: isOpen ? 0 : 10 }}
+            transition={{ duration: 1, delay: 1.5 }}
+          >
+             <span className="font-playfair text-lg tracking-[2px] text-ivory mb-2 drop-shadow-sm uppercase text-center">Scroll down</span>
+             <ChevronDown className="w-6 h-6 text-gold animate-bounce mx-auto" />
+          </motion.div>
         </div>
-        
-        <motion.div 
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center opacity-80"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: isOpen ? 0.8 : 0, y: isOpen ? 0 : 20 }}
-          transition={{ duration: 1, delay: 1.5 }}
-        >
-           <span className="font-playfair text-lg tracking-[2px] text-ivory mb-2 drop-shadow-sm uppercase">Scroll down</span>
-           <ChevronDown className="w-6 h-6 text-gold animate-bounce" />
-        </motion.div>
       </motion.div>
 
       {/* The Grand Full-Screen Envelope (Now in dark theme) */}
