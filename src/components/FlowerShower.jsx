@@ -2,17 +2,17 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const FlowerShower = () => {
-  // Create an array of 25 petals
-  const petals = Array.from({ length: 25 });
+  // Reduced array to 12 petals for a minimal, gentle shower
+  const petals = Array.from({ length: 12 });
 
   return (
     <div className="fixed inset-0 pointer-events-none z-[45] overflow-hidden">
       {petals.map((_, i) => {
-        // Randomize initial position, fall duration, delay, and rotation
+        // Randomize initial position, longer fall duration, delay, and smaller size
         const left = Math.random() * 100;
-        const duration = 10 + Math.random() * 15; // 10s to 25s
-        const delay = Math.random() * -20; // Start at different times
-        const size = 15 + Math.random() * 20; // 15px to 35px
+        const duration = 20 + Math.random() * 25; // Slower: 20s to 45s
+        const delay = Math.random() * -30; // Start at different times
+        const size = 8 + Math.random() * 12; // Smaller: 8px to 20px
 
         return (
           <motion.div
@@ -22,11 +22,11 @@ const FlowerShower = () => {
               left: `${left}%`,
               width: size,
               height: size,
-              opacity: 0.6 + Math.random() * 0.4,
+              opacity: 0.2 + Math.random() * 0.3, // Much more subtle opacity
             }}
             animate={{
               y: ['0vh', '110vh'],
-              x: ['0vw', `${-10 + Math.random() * 20}vw`],
+              x: ['0vw', `${-5 + Math.random() * 10}vw`], // Less intense lateral sway
               rotate: [0, 360 * (Math.random() > 0.5 ? 1 : -1)],
             }}
             transition={{
