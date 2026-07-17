@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Volume2, VolumeX } from 'lucide-react';
+import { Volume2, VolumeX, ChevronDown } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Welcome from './components/Welcome';
@@ -11,13 +11,12 @@ import Events from './components/Events';
 import Venue from './components/Venue';
 import RSVP from './components/RSVP';
 import Footer from './components/Footer';
+import FlowerShower from './components/FlowerShower';
 
 function App() {
   const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef(null);
-
-  const [isPlaying, setIsPlaying] = useState(false);
   const [hasEntered, setHasEntered] = useState(false);
+  const audioRef = useRef(null);
 
   // Smooth scroll behavior
   useEffect(() => {
@@ -52,6 +51,13 @@ function App() {
   return (
     <div className="font-lora bg-bg-red text-ivory min-h-screen overflow-x-hidden relative">
       
+      {/* Luxury Background Frame */}
+      <div className="fixed inset-4 z-40 border-[1px] border-gold/30 pointer-events-none mix-blend-screen" />
+      <div className="fixed inset-6 z-40 border-[1px] border-gold/20 pointer-events-none mix-blend-screen" />
+      
+      {/* Flower Shower Particle System */}
+      <FlowerShower />
+
       {/* Entry Overlay - Tap to Open */}
       <AnimatePresence>
         {!hasEntered && (

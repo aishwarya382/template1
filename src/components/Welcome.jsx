@@ -9,6 +9,16 @@ const Welcome = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="flex justify-center mb-8"
+        >
+          <img src="/swan-heart.png" alt="Swan Heart" className="w-32 h-32 md:w-48 md:h-48 object-contain opacity-90 drop-shadow-lg" />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.8 }}
           className="max-w-3xl mx-auto glass-card-red p-10 md:p-16 relative"
         >
