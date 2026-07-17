@@ -202,9 +202,9 @@ const Hero = () => {
 
             {/* The Seal Itself */}
             <motion.div
-              className="w-[110px] h-[110px] bg-gradient-to-br from-[#E8D8B5] via-[#D4AF37] to-[#B5952F] rounded-full flex items-center justify-center border-[3px] border-ivory text-ivory font-cinzel text-5xl shadow-[0_15px_40px_rgba(212,175,55,0.4)] relative"
+              className="w-[110px] h-[110px] bg-gradient-to-br from-[#dc2626] via-[#991b1b] to-[#450a0a] rounded-full flex items-center justify-center border-[3px] border-ivory text-gold-light font-cinzel text-5xl shadow-[0_15px_40px_rgba(153,27,27,0.5)] relative"
               style={{ 
-                boxShadow: "inset 0 0 20px rgba(255,255,255,0.5), 0 15px 40px rgba(212,175,55,0.4)",
+                boxShadow: "inset 0 0 20px rgba(0,0,0,0.5), 0 15px 40px rgba(153,27,27,0.5)",
               }}
               animate={{
                 scale: isPressed ? 0.92 : 1,
@@ -212,7 +212,7 @@ const Hero = () => {
               }}
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
             >
-              <span className="drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)] tracking-wider relative top-1">
+              <span className="drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)] tracking-wider relative top-1">
                 A&R
               </span>
             </motion.div>
