@@ -35,12 +35,12 @@
 
   /* Redesigned glass card for white theme */
   .glass-card-light {
-    @apply bg-white/70 backdrop-blur-md border border-maroon/10 shadow-[0_8px_32px_rgba(0,0,0,0.05)] rounded-sm p-8 md:p-12 transition-all duration-500;
+    @apply bg-white/90 backdrop-blur-md border border-maroon/10 shadow-[0_8px_32px_rgba(0,0,0,0.05)] rounded-sm p-8 md:p-12 transition-all duration-500;
   }
   
   /* Fallback */
   .glass-card-red {
-    @apply bg-white/70 backdrop-blur-md border border-maroon/10 shadow-[0_8px_32px_rgba(0,0,0,0.05)] rounded-sm p-8 md:p-12 transition-all duration-500;
+    @apply bg-white/90 backdrop-blur-md border border-maroon/10 shadow-[0_8px_32px_rgba(0,0,0,0.05)] rounded-sm p-8 md:p-12 transition-all duration-500;
   }
 
   .container-luxury {
