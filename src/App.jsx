@@ -104,19 +104,8 @@ function App() {
                   <motion.div 
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="relative z-30 w-[120px] h-[120px] md:w-[150px] md:h-[150px] bg-gradient-to-br from-[#ff1a1a] via-[#dc2626] to-[#8b0000] rounded-full flex flex-col items-center justify-center shadow-[inset_0_0_20px_rgba(0,0,0,0.4),_0_15px_40px_rgba(0,0,0,0.8)] border-2 border-white/30"
-                  >
-                     <span className="font-montserrat text-white/90 text-[10px] md:text-xs uppercase tracking-widest drop-shadow-md">
-                       Open
-                     </span>
-                  </motion.div>
-                </div>
-                
-                <div className="flex flex-col items-center gap-3 mt-12 animate-pulse">
-                  <span className="font-cinzel tracking-editorial text-xs md:text-sm text-white/90 uppercase drop-shadow-md">
-                    Tap the seal to enter
-                  </span>
-                  <ChevronDown className="w-5 h-5 text-white/80 drop-shadow-md" />
+                    className="relative z-30 w-[100px] h-[100px] md:w-[130px] md:h-[130px] bg-gradient-to-br from-[#ff1a1a] via-[#dc2626] to-[#8b0000] rounded-full flex flex-col items-center justify-center shadow-[inset_0_0_20px_rgba(0,0,0,0.4),_0_15px_40px_rgba(0,0,0,0.8)] border-2 border-white/30"
+                  />
                 </div>
               </motion.div>
             </motion.div>
