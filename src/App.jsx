@@ -65,8 +65,9 @@ function App() {
       <AnimatePresence>
         {!hasEntered && (
           <motion.div 
+            key="curtain-overlay"
             className="fixed inset-0 z-[100] pointer-events-none flex"
-            exit={{ opacity: 1, transition: { duration: 1.5 } }}
+            exit={{ opacity: 0, transition: { delay: 1.5, duration: 0.5 } }}
           >
             {/* Left Curtain */}
             <motion.div 
