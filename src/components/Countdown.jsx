@@ -48,21 +48,46 @@ const Countdown = () => {
     canvas.width = rect.width;
     canvas.height = rect.height;
 
-    // Fill with luxury gold gradient
+    // Fallback gradient while loading
     const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
     gradient.addColorStop(0, '#E8D8B5');
     gradient.addColorStop(0.5, '#D4AF37');
     gradient.addColorStop(1, '#B5952F');
-    
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-    // Add instruction text
-    ctx.fillStyle = '#1F1F1F';
-    ctx.font = '24px "Cinzel Decorative", serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('Scratch to Reveal', canvas.width / 2, canvas.height / 2);
+
+    const drawText = () => {
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = '26px "Cinzel Decorative", serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.shadowColor = 'rgba(0,0,0,0.6)';
+      ctx.shadowBlur = 8;
+      ctx.fillText('Scratch to Reveal', canvas.width / 2, canvas.height / 2);
+      ctx.shadowBlur = 0;
+    };
+    drawText();
+
+    // Load Luxury Glitter Image
+    const img = new Image();
+    img.crossOrigin = "Anonymous";
+    img.src = 'https://images.unsplash.com/photo-1550684376-efcbd6e3f031?q=80&w=1000&auto=format&fit=crop'; // Dark/Gold luxury bokeh glitter
+    img.onload = () => {
+      // Re-draw with glitter
+      ctx.globalCompositeOperation = 'source-over'; // ensure we paint over
+      
+      // Draw image to cover canvas
+      const scale = Math.max(canvas.width / img.width, canvas.height / img.height);
+      const x = (canvas.width / 2) - (img.width / 2) * scale;
+      const y = (canvas.height / 2) - (img.height / 2) * scale;
+      ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
+      
+      // Add a golden tint over the glitter for richness
+      ctx.fillStyle = 'rgba(212,175,55,0.3)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      drawText();
+    };
 
     let isDrawing = false;
     let scratchedPixels = 0;
